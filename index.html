@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Drop Shot Play Sign Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800;12..96,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one phone screen. Wordmark top-left, QR card as the anchor, then the Grand Prize banner. */
+:root {
+  --canvas: #f6f2ea;
+  --surface: #fcf9f3;
+  --ink: #0c2722;
+  --muted: #4a5f59;
+  --brand: #1c6b57;
+  --accent: #e3b05a;
+  --accent-strong: #c2872f;
+  --line: #e4ddcf;
+  --on-brand: #fcf9f3;
+  --qr-bg: #ffffff;
+  --qr-ink: #0c2722;
+  --f-display: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --canvas: #0c2722; --surface: #12332d; --ink: #f6f2ea; --muted: #a9bdb6;
+    --brand: #1c6b57; --accent: #e3b05a; --accent-strong: #e3b05a; --line: #22463f; --on-brand: #fcf9f3;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --canvas: #0c2722; --surface: #12332d; --ink: #f6f2ea; --muted: #a9bdb6;
+  --brand: #1c6b57; --accent: #e3b05a; --accent-strong: #e3b05a; --line: #22463f; --on-brand: #fcf9f3;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--canvas); color: var(--ink); font-family: var(--f-body); }
+.page { max-width: 440px; margin: 0 auto; padding-inline: 20px; padding-block: 18px 28px; display: grid; gap: 22px; }
+.top { display: flex; align-items: center; justify-content: space-between; }
+.wordmark { font-family: var(--f-body); font-weight: 600; text-transform: uppercase; letter-spacing: 0.2em; font-size: 13px; color: var(--accent-strong); }
+
+.scan { display: grid; gap: 14px; justify-items: center; text-align: center; }
+.qr-card { background: var(--qr-bg); border-radius: 18px; padding: 18px; width: min(100%, 320px); box-shadow: 0 1px 0 var(--line), 0 10px 30px rgba(12, 39, 34, 0.10); }
+.qr-card svg { display: block; width: 100%; height: auto; }
+.scan h1 { font-family: var(--f-display); font-weight: 800; font-size: clamp(26px, 7.4vw, 32px); line-height: 1.08; letter-spacing: -0.01em; margin: 0; text-wrap: balance; }
+.link-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; }
+.link-row a { font-family: var(--f-mono); font-size: 15px; color: var(--brand); text-decoration: none; border-bottom: 1.5px solid var(--accent); padding-bottom: 1px; }
+:root[data-theme="dark"] .link-row a { color: var(--ink); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .link-row a { color: var(--ink); } }
+.copy { font: 500 12px var(--f-body); color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; cursor: pointer; }
+.copy:focus-visible, .link-row a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.prize { position: relative; background: var(--brand); color: var(--on-brand); border-radius: 18px; padding: 20px 20px 22px; display: grid; gap: 6px; overflow: hidden; }
+.eyebrow { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding-right: 92px; }
+.prize h2 { font-family: var(--f-display); font-weight: 800; font-size: 24px; line-height: 1.1; margin: 0; padding-right: 92px; text-wrap: balance; }
+.amount { font-family: var(--f-display); font-weight: 800; font-size: clamp(40px, 12vw, 52px); line-height: 1; margin-top: 10px; font-variant-numeric: tabular-nums; }
+.amount small { display: block; font-family: var(--f-mono); font-weight: 500; font-size: 11.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.multi { font-size: 15px; line-height: 1.4; }
+.multi b { color: var(--accent); font-weight: 600; }
+.stamp { position: absolute; top: 16px; right: 16px; width: 80px; height: 80px; border-radius: 50%; background: var(--accent); color: var(--ink); display: grid; place-content: center; text-align: center; transform: rotate(-10deg); box-shadow: inset 0 0 0 3px var(--brand), inset 0 0 0 5px var(--accent); }
+:root[data-theme="dark"] .stamp { color: #0c2722; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .stamp { color: #0c2722; } }
+.stamp strong { font-family: var(--f-display); font-weight: 800; font-size: 26px; line-height: 1; }
+.stamp span { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; margin-top: 3px; }
+.prize-banner { display: block; width: 100%; height: auto; }
+.foot { font-size: 12px; color: var(--muted); text-align: center; }
+@media (prefers-reduced-motion: no-preference) { .stamp { transition: transform .3s; } .stamp:hover { transform: rotate(-4deg); } }
+</style>
+<style>html{color-scheme:light}body{margin:0}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style>
+</head>
+<body>
+
+<main class="page">
+  <header class="top">
+    <div class="wordmark">Drop Shot Play</div>
+  </header>
+
+  <section class="scan" aria-labelledby="scan-h">
+    <div class="qr-card">
+      <svg viewBox="-1 -1 31 31" role="img" aria-label="QR code for dropshotplay.com" shape-rendering="crispEdges"><rect x="-1" y="-1" width="31" height="31" fill="#ffffff"/><path fill="#0c2722" d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM8 0h1v1h-1zM12 0h1v1h-1zM13 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM20 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM25 0h1v1h-1zM26 0h1v1h-1zM27 0h1v1h-1zM28 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM8 1h1v1h-1zM9 1h1v1h-1zM11 1h1v1h-1zM14 1h1v1h-1zM17 1h1v1h-1zM20 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM8 2h1v1h-1zM10 2h1v1h-1zM19 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM9 3h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM12 3h1v1h-1zM13 3h1v1h-1zM14 3h1v1h-1zM17 3h1v1h-1zM19 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM10 4h1v1h-1zM12 4h1v1h-1zM15 4h1v1h-1zM16 4h1v1h-1zM17 4h1v1h-1zM19 4h1v1h-1zM20 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM11 5h1v1h-1zM15 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM25 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM13 7h1v1h-1zM14 7h1v1h-1zM15 7h1v1h-1zM19 7h1v1h-1zM2 8h1v1h-1zM3 8h1v1h-1zM4 8h1v1h-1zM6 8h1v1h-1zM8 8h1v1h-1zM12 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM21 8h1v1h-1zM22 8h1v1h-1zM23 8h1v1h-1zM26 8h1v1h-1zM27 8h1v1h-1zM28 8h1v1h-1zM0 9h1v1h-1zM2 9h1v1h-1zM3 9h1v1h-1zM7 9h1v1h-1zM10 9h1v1h-1zM13 9h1v1h-1zM14 9h1v1h-1zM18 9h1v1h-1zM19 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM23 9h1v1h-1zM24 9h1v1h-1zM26 9h1v1h-1zM28 9h1v1h-1zM0 10h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM4 10h1v1h-1zM5 10h1v1h-1zM6 10h1v1h-1zM8 10h1v1h-1zM10 10h1v1h-1zM11 10h1v1h-1zM15 10h1v1h-1zM16 10h1v1h-1zM20 10h1v1h-1zM21 10h1v1h-1zM22 10h1v1h-1zM24 10h1v1h-1zM1 11h1v1h-1zM3 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM8 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM15 11h1v1h-1zM17 11h1v1h-1zM18 11h1v1h-1zM19 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM23 11h1v1h-1zM25 11h1v1h-1zM27 11h1v1h-1zM0 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM9 12h1v1h-1zM10 12h1v1h-1zM15 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM23 12h1v1h-1zM26 12h1v1h-1zM27 12h1v1h-1zM28 12h1v1h-1zM1 13h1v1h-1zM3 13h1v1h-1zM4 13h1v1h-1zM5 13h1v1h-1zM8 13h1v1h-1zM9 13h1v1h-1zM11 13h1v1h-1zM12 13h1v1h-1zM13 13h1v1h-1zM14 13h1v1h-1zM18 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM21 13h1v1h-1zM22 13h1v1h-1zM24 13h1v1h-1zM25 13h1v1h-1zM27 13h1v1h-1zM28 13h1v1h-1zM0 14h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM6 14h1v1h-1zM7 14h1v1h-1zM8 14h1v1h-1zM10 14h1v1h-1zM14 14h1v1h-1zM17 14h1v1h-1zM18 14h1v1h-1zM21 14h1v1h-1zM23 14h1v1h-1zM1 15h1v1h-1zM5 15h1v1h-1zM8 15h1v1h-1zM9 15h1v1h-1zM10 15h1v1h-1zM11 15h1v1h-1zM12 15h1v1h-1zM13 15h1v1h-1zM14 15h1v1h-1zM17 15h1v1h-1zM20 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM28 15h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM4 16h1v1h-1zM5 16h1v1h-1zM6 16h1v1h-1zM9 16h1v1h-1zM11 16h1v1h-1zM15 16h1v1h-1zM25 16h1v1h-1zM26 16h1v1h-1zM27 16h1v1h-1zM0 17h1v1h-1zM1 17h1v1h-1zM3 17h1v1h-1zM4 17h1v1h-1zM5 17h1v1h-1zM8 17h1v1h-1zM9 17h1v1h-1zM11 17h1v1h-1zM12 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM19 17h1v1h-1zM20 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM24 17h1v1h-1zM25 17h1v1h-1zM26 17h1v1h-1zM27 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM2 18h1v1h-1zM3 18h1v1h-1zM4 18h1v1h-1zM6 18h1v1h-1zM8 18h1v1h-1zM10 18h1v1h-1zM11 18h1v1h-1zM15 18h1v1h-1zM17 18h1v1h-1zM22 18h1v1h-1zM24 18h1v1h-1zM25 18h1v1h-1zM26 18h1v1h-1zM0 19h1v1h-1zM2 19h1v1h-1zM3 19h1v1h-1zM4 19h1v1h-1zM8 19h1v1h-1zM12 19h1v1h-1zM14 19h1v1h-1zM15 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM22 19h1v1h-1zM24 19h1v1h-1zM25 19h1v1h-1zM27 19h1v1h-1zM0 20h1v1h-1zM2 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM7 20h1v1h-1zM9 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM12 20h1v1h-1zM13 20h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM25 20h1v1h-1zM26 20h1v1h-1zM27 20h1v1h-1zM28 20h1v1h-1zM8 21h1v1h-1zM10 21h1v1h-1zM11 21h1v1h-1zM12 21h1v1h-1zM14 21h1v1h-1zM17 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM25 21h1v1h-1zM28 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM9 22h1v1h-1zM12 22h1v1h-1zM14 22h1v1h-1zM15 22h1v1h-1zM16 22h1v1h-1zM19 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM9 23h1v1h-1zM13 23h1v1h-1zM16 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM25 23h1v1h-1zM27 23h1v1h-1zM0 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM11 24h1v1h-1zM12 24h1v1h-1zM14 24h1v1h-1zM15 24h1v1h-1zM18 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM25 24h1v1h-1zM26 24h1v1h-1zM27 24h1v1h-1zM0 25h1v1h-1zM2 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM6 25h1v1h-1zM8 25h1v1h-1zM9 25h1v1h-1zM10 25h1v1h-1zM11 25h1v1h-1zM14 25h1v1h-1zM15 25h1v1h-1zM17 25h1v1h-1zM18 25h1v1h-1zM19 25h1v1h-1zM20 25h1v1h-1zM21 25h1v1h-1zM23 25h1v1h-1zM25 25h1v1h-1zM0 26h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM8 26h1v1h-1zM10 26h1v1h-1zM12 26h1v1h-1zM15 26h1v1h-1zM19 26h1v1h-1zM20 26h1v1h-1zM21 26h1v1h-1zM22 26h1v1h-1zM23 26h1v1h-1zM24 26h1v1h-1zM27 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM11 27h1v1h-1zM12 27h1v1h-1zM14 27h1v1h-1zM15 27h1v1h-1zM16 27h1v1h-1zM20 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM24 27h1v1h-1zM25 27h1v1h-1zM27 27h1v1h-1zM0 28h1v1h-1zM1 28h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM9 28h1v1h-1zM11 28h1v1h-1zM12 28h1v1h-1zM13 28h1v1h-1zM17 28h1v1h-1zM18 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM26 28h1v1h-1z"/></svg>
+    </div>
+    <h1 id="scan-h">Scan Here to Create your Account</h1>
+    <div class="link-row">
+      <a href="https://dropshotplay.com" target="_blank" rel="noopener">dropshotplay.com</a>
+      <button class="copy" id="copy-link" type="button">Copy link</button>
+    </div>
+  </section>
+
+  <svg class="prize-banner" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 656 328" role="img" aria-label="Drop Shot Grand Money Open. January 23. First Place $2,500 and up to $5,000 with Series Multiplier. 20% Early Bird.">
+  <rect x="0" y="0" width="656" height="328" rx="28" fill="#1c6b57"/>
+  <text x="40" y="86" font-family="Bricolage Grotesque, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-weight="800" font-size="46" fill="#f6f2ea">Drop Shot Grand</text>
+  <text x="40" y="140" font-family="Bricolage Grotesque, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-weight="800" font-size="46" fill="#f6f2ea">Money Open</text>
+  <text x="40" y="186" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="26" fill="#f6f2ea">January 23. First Place</text>
+  <text x="40" y="222" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="26" fill="#f6f2ea">$2,500 and up to $5,000</text>
+  <text x="40" y="258" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-size="26" fill="#f6f2ea">with Series Multiplier</text>
+  <g transform="rotate(-8 546 164)">
+    <circle cx="546" cy="164" r="84" fill="#e3b05a" stroke="#c2872f" stroke-width="5.9"/>
+    <text x="546" y="172.4" text-anchor="middle" font-family="Bricolage Grotesque, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif" font-weight="900" font-size="52.1" fill="#1a1f2e">20%</text>
+    <text x="546" y="204.3" text-anchor="middle" font-family="JetBrains Mono, ui-monospace, Menlo, Consolas, monospace" font-weight="700" font-size="22" fill="#1a1f2e">Early Bird</text>
+  </g>
+</svg>
+
+  <p class="foot">Open Doubles</p>
+</main>
+
+<script>
+(function(){
+  var btn = document.getElementById("copy-link"), url = "https://dropshotplay.com";
+  btn.addEventListener("click", function(){
+    function done(){ btn.textContent = "Copied"; setTimeout(function(){ btn.textContent = "Copy link"; }, 1600); }
+    try {
+      navigator.clipboard.writeText(url).then(done, function(){ selectLink(); });
+    } catch (e) { selectLink(); }
+  });
+  function selectLink(){
+    var a = document.querySelector(".link-row a"), r = document.createRange(); r.selectNodeContents(a);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = "Selected";
+  }
+  // Keep the screen on while the QR is being shown.
+  async function wake(){ try { if ("wakeLock" in navigator && document.visibilityState === "visible") await navigator.wakeLock.request("screen"); } catch (e) {} }
+  wake(); document.addEventListener("visibilitychange", wake);
+})();
+</script>
+</body>
+</html>
